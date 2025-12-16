@@ -31,3 +31,7 @@ C:\Users\agnel\Desktop\backend_net\lemuraBack.Api\obj\Debug\net10.0\refint\lemur
 C:\Users\agnel\Desktop\backend_net\lemuraBack.Api\obj\Debug\net10.0\lemuraBack.Api.pdb
 C:\Users\agnel\Desktop\backend_net\lemuraBack.Api\obj\Debug\net10.0\lemuraBack.Api.genruntimeconfig.cache
 C:\Users\agnel\Desktop\backend_net\lemuraBack.Api\obj\Debug\net10.0\ref\lemuraBack.Api.dll
+C:\Users\agnel\Desktop\backend_net\lemuraBack.api\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\agnel\Desktop\backend_net\lemuraBack.api\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\agnel\Desktop\backend_net\lemuraBack.api\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\agnel\Desktop\backend_net\lemuraBack.api\obj\Debug\net10.0\lemuraBack.Api.sourcelink.json
