@@ -10,6 +10,6 @@ namespace LemuraBack.Api.Data
         {
         }
 
-        public DbSet<Rooms> Rooms { get; set; }
+        public DbSet<Room> Rooms { get; set; }
     }
 }

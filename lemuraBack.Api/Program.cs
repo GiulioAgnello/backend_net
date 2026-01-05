@@ -2,30 +2,27 @@ using Microsoft.EntityFrameworkCore;
 using LemuraBack.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-// Add services to the container
+
+// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Leggi la connection string da appsettings.json
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
-    ?? "Data Source=app.db";
-
+// Add DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(connectionString));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
-// Configure HTTP pipeline
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Commenta questa riga se causa problemi in sviluppo
-// app.UseHttpsRedirection();
-
+app.UseHttpsRedirection();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
