@@ -6,35 +6,40 @@ using LemuraBack.Api.Models;
 namespace LemuraBack.Api.Controllers;
 
 [ApiController]
-[Route("api/rooms")]
+[Route("api/[controller]")]
 public class RoomsController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly LemuraDbContext _context;
 
-    public RoomsController(AppDbContext context)
+    public RoomsController(LemuraDbContext context)
     {
         _context = context;
     }
 
     // GET: api/rooms
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Room>>> GetAll()
+    public async Task<ActionResult<IEnumerable<Room>>> GetRooms()
     {
-        return await _context.Rooms.ToListAsync();
+        return Ok(await _context.Rooms.ToListAsync());
     }
 
     // GET: api/rooms/{id}
     [HttpGet("{id}")]
-    public async Task<ActionResult<Room>> GetById(int id)
+    public async Task<ActionResult<Room>> GetRoom(int id)
     {
         var room = await _context.Rooms.FindAsync(id);
-
         if (room == null)
-        {
             return NotFound();
-        }
+        return Ok(room);
+    }
 
-        return room;
+    // POST: api/rooms
+    [HttpPost]
+    public async Task<ActionResult<Room>> Create(Room room)
+    {
+        _context.Rooms.Add(room);
+        await _context.SaveChangesAsync();
+        return CreatedAtAction(nameof(GetRoom), new { id = room.Id }, room);
     }
 
     // DELETE: api/rooms/{id}
