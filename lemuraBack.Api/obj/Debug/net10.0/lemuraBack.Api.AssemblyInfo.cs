@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lemuraBack.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4fddfe60c43efa37c5bf8dec2d0ce318bad41dc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ccc925ec2d2e9e039b1a7549ae81446ec0141b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("lemuraBack.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lemuraBack.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
