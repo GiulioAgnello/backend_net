@@ -197,3 +197,5 @@ C:\Users\agnel\Desktop\backend_net\lemuraBack.Api\bin\Debug\net10.0\runtimes\win
 C:\Users\agnel\Desktop\backend_net\lemuraBack.Api\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\agnel\Desktop\backend_net\lemuraBack.Api\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\agnel\Desktop\backend_net\lemuraBack.Api\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\agnel\Desktop\backend_net\lemuraBack.api\bin\Debug\net10.0\BCrypt.Net-Next.dll
+C:\Users\agnel\Desktop\backend_net\lemuraBack.api\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
