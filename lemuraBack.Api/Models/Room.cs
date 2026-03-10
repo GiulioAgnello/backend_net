@@ -7,4 +7,5 @@ public class Room
     public required string Description { get; set; }
     public decimal PricePerNight { get; set; }
     public bool IsAvailable { get; set; }
+    public int MaxGuests { get; set; } = 2;
 }

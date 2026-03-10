@@ -55,9 +55,30 @@ using (var scope = app.Services.CreateScope())
     if (!db.Rooms.Any())
     {
         db.Rooms.AddRange(
-            new Room { Name = "Sternatia — Camera Matrimoniale", Description = "Camera matrimoniale con vista sul borgo medievale", PricePerNight = 120m, IsAvailable = true },
-            new Room { Name = "Sternatia — Camera Doppia", Description = "Camera doppia nel palazzo del '600", PricePerNight = 100m, IsAvailable = true },
-            new Room { Name = "Corigliano — Camera Matrimoniale", Description = "Camera con vista sul castello angioino", PricePerNight = 110m, IsAvailable = true }
+            // STERNATIA — casa intera
+        new Room {
+            Name = "Sternatia — Casa Intera",
+            Description = "Casa intera nel palazzo del '600. Soggiorno, cucina attrezzata, bagno e camere. Perfetta per famiglie o gruppi.",
+            PricePerNight = 180m,
+            IsAvailable = true,
+            MaxGuests = 6
+        },
+        // CORIGLIANO — Suite 1
+        new Room {
+            Name = "Corigliano — Suite Castello",
+            Description = "Suite con vista sul castello angioino. Camera matrimoniale con bagno privato e terrazzo.",
+            PricePerNight = 120m,
+            IsAvailable = true,
+            MaxGuests = 4
+        },
+        // CORIGLIANO — Suite 2
+        new Room {
+            Name = "Corigliano — Suite Giardino",
+            Description = "Suite affacciata sul giardino interno. Camera matrimoniale o doppia con bagno privato.",
+            PricePerNight = 110m,
+            IsAvailable = true,
+            MaxGuests = 4
+        }
         );
         db.SaveChanges();
     }
