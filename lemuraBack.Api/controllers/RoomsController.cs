@@ -2,86 +2,75 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LemuraBack.Api.Data;
 using LemuraBack.Api.Models;
-
+using LemuraBack.Api.Services;
 namespace LemuraBack.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class RoomsController : ControllerBase
 {
-    private readonly LemuraDbContext _context;
+    private readonly LemuraDbContext _db;
 
-    public RoomsController(LemuraDbContext context)
+    public RoomsController(LemuraDbContext db)
     {
-        _context = context;
+        _db = db;
     }
 
-    // GET: api/rooms
+    // GET /api/Rooms/
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Room>>> GetRooms()
+    public async Task<IActionResult> GetAll()
     {
-        return Ok(await _context.Rooms.ToListAsync());
+        var rooms = await _db.Rooms
+            .Where(r => r.IsAvailable)
+            .Select(r => new {
+                r.Id,
+                r.Name,
+                r.Description,
+                r.PricePerNight,
+                r.MaxGuests,
+                r.IsAvailable
+            })
+            .ToListAsync();
+        return Ok(rooms);
     }
 
-    // GET: api/rooms/{id}
+    // GET /api/Rooms/{id}
     [HttpGet("{id}")]
-    public async Task<ActionResult<Room>> GetRoom(int id)
+    public async Task<IActionResult> GetById(int id)
     {
-        var room = await _context.Rooms.FindAsync(id);
-        if (room == null)
-            return NotFound();
+        var room = await _db.Rooms.FindAsync(id);
+        if (room == null) return NotFound();
         return Ok(room);
     }
 
-    // POST: api/rooms
-    [HttpPost]
-    public async Task<ActionResult<Room>> Create(Room room)
+    // PATCH /api/Rooms/{id}/ical — aggiorna link iCal
+    [HttpPatch("{id}/ical")]
+    public async Task<IActionResult> UpdateIcal(int id, [FromBody] UpdateIcalRequest req)
     {
-        _context.Rooms.Add(room);
-        await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetRoom), new { id = room.Id }, room);
+        var room = await _db.Rooms.FindAsync(id);
+        if (room == null) return NotFound();
+
+        if (req.BookingIcalUrl != null) room.BookingIcalUrl = req.BookingIcalUrl;
+        if (req.AirbnbIcalUrl != null) room.AirbnbIcalUrl = req.AirbnbIcalUrl;
+
+        await _db.SaveChangesAsync();
+
+        // Sync immediata dopo aver salvato i link
+        return Ok(new { message = "Link iCal aggiornati" });
     }
 
-    // DELETE: api/rooms/{id}
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
+    // POST /api/Rooms/sync — forza sync manuale
+    [HttpPost("sync")]
+    public async Task<IActionResult> ForceSync(
+        [FromServices] ICalSyncService syncService)
     {
-        var room = await _context.Rooms.FindAsync(id);
-
-        if (room == null)
-        {
-            return NotFound();
-        }
-
-        _context.Rooms.Remove(room);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
+        await syncService.SyncAll();
+        return Ok(new { message = "Sync completata" });
     }
+}
 
-    // PUT: api/rooms/{id}
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, Room updatedRoom)
-    {
-        if (id != updatedRoom.Id)
-        {
-            return BadRequest("ID mismatch");
-        }
-
-        var room = await _context.Rooms.FindAsync(id);
-
-        if (room == null)
-        {
-            return NotFound();
-        }
-
-        room.Name = updatedRoom.Name;
-        room.Description = updatedRoom.Description;
-        room.PricePerNight = updatedRoom.PricePerNight;
-        room.IsAvailable = updatedRoom.IsAvailable;
-
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
+public class UpdateIcalRequest
+{
+    public string? BookingIcalUrl { get; set; }
+    public string? AirbnbIcalUrl { get; set; }
 }
