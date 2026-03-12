@@ -4373,11 +4373,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\agnel\\Desktop\\backend_net\\lemuraBack.api\\lemuraBack.Api.csproj",
+      "projectUniqueName": "C:\\Users\\agnel\\Desktop\\backend_net\\lemuraBack.Api\\lemuraBack.Api.csproj",
       "projectName": "lemuraBack.Api",
-      "projectPath": "C:\\Users\\agnel\\Desktop\\backend_net\\lemuraBack.api\\lemuraBack.Api.csproj",
+      "projectPath": "C:\\Users\\agnel\\Desktop\\backend_net\\lemuraBack.Api\\lemuraBack.Api.csproj",
       "packagesPath": "C:\\Users\\agnel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\agnel\\Desktop\\backend_net\\lemuraBack.api\\obj\\",
+      "outputPath": "C:\\Users\\agnel\\Desktop\\backend_net\\lemuraBack.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\agnel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4464,7 +4464,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

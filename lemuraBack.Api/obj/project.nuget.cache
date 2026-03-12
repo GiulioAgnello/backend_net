@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fKKqxbGf0pA=",
+  "dgSpecHash": "+d8gIbajLFc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\agnel\\Desktop\\backend_net\\lemuraBack.api\\lemuraBack.Api.csproj",
+  "projectFilePath": "C:\\Users\\agnel\\Desktop\\backend_net\\LemuraBack.api\\lemuraBack.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\agnel\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\agnel\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
